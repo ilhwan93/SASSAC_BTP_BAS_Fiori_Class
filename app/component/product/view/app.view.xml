@@ -1,0 +1,20 @@
+<mvc:View controllerName="project3.controller.app"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+    <App class="myAppDemoWT">
+        
+            <content>
+                <mvc:XMLView viewName = "project3.view.Hellopanel"/> <!--nested view-->
+            </content>
+       
+    </App>
+</mvc:View>
+<!-- <VBox>
+            <Text text="Hello World" />
+            <Text text="Hello &amp; world" />
+            <Text text="&gt;" />
+            <Text text="&lt;" />
+            <Text text="&apos;" />
+            <Text text="&quot;" />
+            </VBox> -->

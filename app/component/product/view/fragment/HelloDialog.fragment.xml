@@ -1,0 +1,19 @@
+<core:FragmentDefinition 
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="helloDialog"
+            text="{i18n>dialogCloseButtonText}" 
+            title="Hello {/recipient/name}">
+        <content>
+            <core:Icon
+              src = "sap-icon://syringe" 
+              size="8rem" 
+              class="sapUiMediumMargin">
+            </core:Icon>
+        </content>
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press=".onCloseDialog" />
+        </beginButton>
+    </Dialog>
+    <!-- <BusyDialog id="busydialog1" title="Loading Data" text="... now loading the data from a far away server" showCancelButton="true" close="onDialogClosed" /> -->
+</core:FragmentDefinition>

@@ -1,0 +1,19 @@
+<mvc:View controllerName="project5.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.f">
+                 
+            <App  >
+            <f:FlexibleColumnLayout
+                autoFocus="false"
+                backgroundDesign="Translucent"               
+                restoreFocusOnBackNavigation="true"
+                id="app"
+                />
+            </App>
+       
+</mvc:View>
+    
+

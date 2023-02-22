@@ -1,0 +1,18 @@
+<mvc:View controllerName="project2.controller.app"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+    <App class="myAppDemoWT">
+        
+          
+       
+    </App>
+</mvc:View>
+<!-- <VBox>
+            <Text text="Hello World" />
+            <Text text="Hello &amp; world" />
+            <Text text="&gt;" />
+            <Text text="&lt;" />
+            <Text text="&apos;" />
+            <Text text="&quot;" />
+            </VBox> -->

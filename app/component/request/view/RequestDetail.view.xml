@@ -1,0 +1,112 @@
+<mvc:View controllerName="project4.controller.RequestDetail" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:t="sap.ui.table" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" displayBlock="true" height="100%">
+    <!--uitable = grid table-->
+    <f:DynamicPage id="RequestPage" headerExpanded="false" toggleHeaderOnTitleClick="true" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <HBox>
+                        <Button class="sapUiTinyMarginBottom" icon="sap-icon://arrow-left" tooltip="Request로 돌아가기" press=".onBack" type="Transparent" />
+                        <Title text="물품 요청  상세" />
+                    </HBox>
+                </f:heading>
+                <f:navigationActions>
+                <Button visible="{=!${layout>/layout}}"
+                        icon="sap-icon://full-screen"
+                        type="Transparent" press=".onfull"/>
+                <Button visible="{layout>/layout}"
+                        icon="sap-icon://exit-full-screen"
+                        type="Transparent" press=".onexitfull"/>
+                </f:navigationActions>
+
+                <f:snappedContent>
+                    <form:SimpleForm layout="ResponsiveGridLayout">
+                        <form:content>
+                            <VBox>
+                                <Label text="요청 번호 : " />
+                                <Text id = "ReqNum" text="{RequestModel>/request_number}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="요청 물품 : " />
+                                <Text text="{RequestModel>/request_product}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="요청자 : " />
+                                <Text text="{RequestModel>/requestor}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="요청 일자 : " />
+                                <Text text="{RequestModel>/request_date}" id="ReqDate" width="100%" 
+						    />
+                                <!--대문자 소문자 차이가 뭐임?-->
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="요청 상태 : " />
+                                <ObjectStatus 
+                                text="{         
+                                path: 'RequestModel>/request_state',
+                                formatter: '.formatters.statusText'
+                                }" 
+                                state="{=${RequestModel>/request_state} ==='A'? 
+                                'Success' : ${RequestModel>/request_state} ==='C'? 'Error': 'None' }" />
+                                    
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="물품 개수 : " />
+                                <Text text="{RequestModel>/request_quantity}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="예상가격 : " />
+                                <Text text="{RequestModel>/request_estimated_price}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox >
+                             <Label text="" />
+                                <Text text="" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox                          
+                            >
+                                <Label text="요청사유 : " />
+                                <Text text="{RequestModel>/request_reason}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M12 S12" />
+                                </layoutData>
+                            </VBox>
+                        </form:content>
+                    </form:SimpleForm>
+                </f:snappedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:footer>
+            <OverflowToolbar visible="{visibleMode>/footer}" >
+            <ToolbarSpacer />
+            <Button type="Emphasized" text="승인" press="onApprove"/>
+            <Button type="Default" text="반려" press="onReject"/>
+                
+            
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

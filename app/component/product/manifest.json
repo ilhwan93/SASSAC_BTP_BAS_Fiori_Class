@@ -1,0 +1,175 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "project3",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.1",
+      "toolsId": "0278d9af-ab94-45d4-b61d-7f8f594d834e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/request/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "companyService": {
+        "uri": "/company/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "project3.i18n.i18n"
+        }
+      },
+      "Company": {
+        "dataSource": "companyService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      },
+      "Request": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      },
+      "Request2": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/Request.json"
+      },
+      "CompanyList": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/CompanyList.json"
+      },
+      "ProductList": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/ProductList.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "project3.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        
+        {
+          "name": "ProductUi",
+          "pattern": "",
+          "target": [
+            "ProductUi"
+          ]
+        },
+        {
+          "name": "ProductM",
+          "pattern": "ProductM",
+          "target": [
+            "ProductM"
+          ]
+        }
+      ],
+        
+      
+      "targets": {
+       
+        "ProductUi": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductUi",
+          "viewName": "ProductUi"
+        },
+        "ProductM": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductM",
+          "viewName": "ProductM"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "project3.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}

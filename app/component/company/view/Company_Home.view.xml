@@ -1,0 +1,33 @@
+<mvc:View
+	controllerName="project2.controller.Company_Home"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"	
+>
+ <ScrollContainer height="100%" width="100%" vertical="true">
+        <Panel width="auto" class = "sapUiResponsiveMargin">
+            <content class="panelbottomline">
+            <GenericTile press="onRequest_list" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="협력 업체 목록">
+                <TileContent >
+                    <ImageContent src="sap-icon://survey"/>
+                </TileContent>
+            </GenericTile>
+        <SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+			<GenericTile
+                
+				backgroundImage="https://media.discordapp.net/attachments/1046688469910556743/1050241042416406589/IMG_3468.jpg" 
+				frameType="TwoByOne" press="pressOnTileOne">
+				
+			</GenericTile>
+			<GenericTile
+				backgroundImage="https://cdn.discordapp.com/attachments/1046688469910556743/1050260262827065404/IMG_0008.jpg"
+				frameType="TwoByOne" press="pressOnTileTwo">
+				
+			</GenericTile>
+		</SlideTile>
+
+            </content>
+        </Panel>
+    </ScrollContainer>
+
+</mvc:View>

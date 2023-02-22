@@ -1,0 +1,232 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "project5",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.1",
+      "toolsId": "0278d9af-ab94-45d4-b61d-7f8f594d834e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/request/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "companyService": {
+        "uri": "/company/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "snackService": {
+        "uri": "/snack/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "project5.i18n.i18n"
+        }
+      },
+      "Company": {
+        "dataSource": "companyService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      },
+      "Request": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      },
+      "Snack": {
+        "dataSource": "snackService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "project5.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Snack_Home",
+          "pattern": "",
+          "target": [
+            "Snack_Home"
+          ],
+          "layout":"OneColumn"
+        },
+        {
+          "name": "Snack_List",
+          "pattern": "Snack_List",
+          "target": [
+            "Snack_List"
+          ],
+          "layout":"OneColumn"
+        },
+        {
+          "name": "Snack_Detail",
+          "pattern": "Snack_Detail/{num}",
+          "target": [
+            "Snack_Detail"
+          ],
+          "layout":"OneColumn"
+        },
+        {
+          "name": "Snack_Create",
+          "pattern": "Snack_Create",
+          "target": [
+            "Snack_Create"
+          ],
+          "layout":"OneColumn"
+        },{
+          "name": "Snack_Chart",
+          "pattern": "",
+          "target": [
+            "Snack_Chart"
+          ],
+          "layout":"OneColumn"
+        }
+        
+      ],
+      "targets": {
+        
+        "Snack_Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Snack_Home",
+          "viewName": "Snack_Home",
+          "controlAggregation": "beginColumnPages"
+        },
+        "Snack_List": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Snack_List",
+          "viewName": "Snack_List",
+          "controlAggregation": "beginColumnPages"
+        },
+        "Snack_Detail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Snack_Detail",
+          "viewName": "Snack_Detail",
+          "controlAggregation": "beginColumnPages"
+        },
+        "Snack_Create": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Snack_Create",
+          "viewName": "Snack_Create",
+          "controlAggregation": "beginColumnPages"
+        },
+        "Snack_Chart": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Snack_Chart",
+          "viewName": "Snack_Chart",
+          "controlAggregation": "beginColumnPages"
+        }
+        
+      }
+    },
+    "rootView": {
+      "viewName": "project5.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}

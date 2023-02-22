@@ -1,0 +1,118 @@
+<mvc:View controllerName="project5.controller.Snack_Home" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.f" xmlns:card="sap.f.cards">
+    <ScrollContainer id="_IDGenScrollContainer1" height="100%" width="100%" vertical="true">
+        <Panel id="_IDGenPanel1" width="auto" class="sapUiResponsiveMargin">
+            <content class="panelbottomline">
+            <HBox id="_IDGenHBox5">
+                    <Title id="_IDGenTitle5" level="Auto" text="간식 요청 관리" />
+                </HBox>
+                <GenericTile id="_IDGenGenericTile1" press="onSnack_list" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="간식 요청 목록">
+                    <TileContent id="_IDGenTileContent1">
+                        <ImageContent id="_IDGenImageContent1" src="sap-icon://survey" />
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="_IDGenGenericTile2" press="onSnack_chart" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="간식 요청 현황">
+                    <TileContent id="_IDGenTileContent4">
+                        <ImageContent id="_IDGenImageContent4" src="sap-icon://bar-chart" />
+                    </TileContent>
+                </GenericTile>
+                    <HBox id="_IDGenHBox2" width="100%" height="3rem" />
+                <HBox id="_IDGenHBox3" width="100%" height="3rem"/>
+                <HBox id="_IDGenHBox1">
+                    <Title id="_IDGenTitle1" level="Auto" text="간식 요청 overview" />
+                </HBox>                 
+               
+                <f:Card id="_IDGenCard1" class="sapUiMediumMargin" width="300px">
+                    <f:header>
+                        <card:Header id="_IDGenHeader1" title="간식 요청 적음 목록" subtitle="최신 3개의 처리 대기 데이터가 보입니다." />
+                    </f:header>
+                    <f:content>
+                        <List id="_IDGenList1" showSeparators="None" items="{
+					path: 'SnackWaitModel>/'}">
+                            <CustomListItem id="_IDGenCustomListItem1" type="Active" press=".onNavToDetail">
+                                <HBox id="_IDGenHBox4" alignItems="Center" justifyContent="SpaceBetween">
+                                    <VBox id="_IDGenVBox1" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                                        <Title id="_IDGenTitle3"  level="H3" text="{SnackWaitModel>snack_name}" />
+                                        <Text id="_IDGenText1" text="{
+                                            path:'SnackWaitModel>snack_category',
+                                            formatter: '.formatters.statusText2'}"/>
+                                    </VBox>
+                                    <ObjectStatus id="_IDGenObjectStatus1"
+									class="sapUiSmallMarginBegin sapUiSmallMarginEnd"
+                                        text="{         
+                                path: 'SnackWaitModel>snack_status',
+                                formatter :'.formatters.statusText'                                
+                                }"
+                                        state="{= ${SnackWaitModel>snack_status} ==='A'? 
+                                'Success' : 'Error' }"
+                                    />
+                                </HBox>                                
+                            </CustomListItem>
+                        </List>
+                    </f:content>
+                </f:Card>
+            </content>
+        </Panel>
+    </ScrollContainer> 
+    
+    
+    <!-- <ScrollContainer id="_IDGenScrollContainer1" height="100%" width="100%" vertical="true">
+        <Panel id="_IDGenPanel1" width="auto" class="sapUiResponsiveMargin">
+            <content class="panelbottomline">
+                <GenericTile id="_IDGenGenericTile1" press="onRequest_list" class="sapUiTinyMarginBegin sapUiTinyMarginTop" header="물품 요청 목록">
+                    <TileContent id="_IDGenTileContent1">
+                        <ImageContent id="_IDGenImageContent1" src="sap-icon://survey" />
+                    </TileContent>
+                </GenericTile>
+                <SlideTile id="_IDGenSlideTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                    <GenericTile id="_IDGenGenericTile2" backgroundImage="https://media.discordapp.net/attachments/1046688469910556743/1050241042416406589/IMG_3468.jpg" frameType="TwoByOne" press="pressOnTileOne" />
+                    <GenericTile id="_IDGenGenericTile3" backgroundImage="https://cdn.discordapp.com/attachments/1046688469910556743/1050260262827065404/IMG_0008.jpg" frameType="TwoByOne" press="pressOnTileTwo" />
+                </SlideTile>
+
+                <HBox id="_IDGenHBox1">
+                    <Title id="_IDGenTitle1" level="Auto" text="물품 요청 관리" />
+                </HBox>
+                <GenericTile id="_IDGenGenericTile4" class="sapUiMarginBegin" header="물품 요청 목록" press=".onRequest_list">
+                    <TileContent id="_IDGenTileContent2">
+                        <ImageContent id="_IDGenImageContent2" src="sap-icon://survey" />
+                    </TileContent>
+                </GenericTile>
+                <GenericTile id="_IDGenGenericTile5" class="" header="물품 요청 현황"  press=".onRequest_chart">
+                    <TileContent id="_IDGenTileContent3">
+                        <ImageContent id="_IDGenImageContent3" src="sap-icon://bar-chart" />
+                    </TileContent>
+                </GenericTile>
+                <HBox id="_IDGenHBox2" width="100%" height="3rem" />
+                <HBox id="_IDGenHBox3" width="100%" height="3rem">
+                    <Title id="_IDGenTitle2" text="물품 요청 OverView" />
+                </HBox>
+                <f:Card id="_IDGenCard1" class="sapUiMediumMargin" width="300px">
+                    <f:header>
+                        <card:Header id="_IDGenHeader1" title="물품 요청 대기 목록" subtitle="최신 3개의 처리 대기 데이터가 보입니다." />
+                    </f:header>
+                    <f:content>Li
+                        <List id="_IDGenList1" showSeparators="None" items="{
+					path: 'SnackWaitModel>/'}">
+                            <CustomListItem id="_IDGenCustomListItem1" type="Active" press=".onNavToDetail">
+                                <HBox id="_IDGenHBox4" alignItems="Center" justifyContent="SpaceBetween">
+                                    <VBox id="_IDGenVBox1" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                                        <Title id="_IDGenTitle3"  level="H3" text="{SnackWaitModel>request_product}" />
+                                        <Text id="_IDGenText1" text="{SnackWaitModel>requestor}" />
+                                    </VBox>
+                                    <ObjectStatus id="_IDGenObjectStatus1"
+									class="sapUiSmallMarginBegin sapUiSmallMarginEnd"
+                                        text="{         
+                                path: 'SnackWaitModel>request_state',
+                                formatter: '.formatters.statusText'
+                                }"
+                                        state="{= ${SnackWaitModel>request_state} ==='A'? 
+                                'Success' : ${SnackWaitModel>request_state} ==='C'? 'Error': 'None' }"
+                                    />
+                                </HBox>                                
+                            </CustomListItem>
+                        </List>
+                    </f:content>
+                </f:Card>
+            </content>
+        </Panel>
+    </ScrollContainer> -->
+</mvc:View>

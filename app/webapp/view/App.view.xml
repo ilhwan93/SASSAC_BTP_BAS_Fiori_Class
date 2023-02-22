@@ -1,0 +1,31 @@
+<mvc:View controllerName="project1.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+        <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+            
+                <Image class="sapUiSmallMargin" src="image/logo.svg" height="30px"/> <!-- https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg 이 url을 src에 넣어서 할수도있음.-->
+                <MenuButton enabled="true" text="">
+                    <menu>
+                        <Menu>
+                            <MenuItem text="스낵 요청 목록" press=".onSnack_List" />
+                                                   
+                          
+                            <MenuItem text="스낵" press="onSnack"/>
+                        </Menu>
+                    </menu>
+                </MenuButton>    
+            </tnt:ToolHeader>
+            
+        </tnt:header>
+        <tnt:mainContents>            <!--원래있던 내용삭제후 App을 추가함.why?App.view에 할당한 공간을 사용하기위함-->
+            <App id="app">
+            </App>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
+    
+

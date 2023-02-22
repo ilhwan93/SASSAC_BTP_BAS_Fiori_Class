@@ -1,0 +1,265 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "project2",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.1",
+      "toolsId": "0278d9af-ab94-45d4-b61d-7f8f594d834e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/request/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "companyService": {
+        "uri": "/company/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "project2.i18n.i18n"
+        }
+      },
+      "Company": {
+        "dataSource": "companyService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      },
+      "Request": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "earlyRequests": true,
+          "synchronizationMode": "None",
+          "autoExpandSelect": true
+        }
+      },
+      "Request2": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/Request.json"
+      },
+      "CompanyList": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/CompanyList.json"
+      },
+      "ProductList": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/ProductList.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "project2.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Company_Home",
+        "pattern": "",
+        "target": [
+          "Company_Home"
+        ]
+
+        },
+       
+        {
+          "name": "CompanyGrid",
+          "pattern": "CompanyGrid",
+          "target": [
+            "CompanyGrid"
+          ],
+          "layout":"OneColumn"
+        },
+        {
+          "name": "CompanyM",
+          "pattern": "CompanyM",
+          "target": [
+            "CompanyM"
+          ],
+          "layout":"OneColumn"
+        },
+        
+        {
+          "name": "CompanyDetail",
+          "pattern": "CompanyDetail/{num}/{table}",
+          "target": [
+            "CompanyGrid",
+            "CompanyDetail"
+          ],
+          "layout":"TwoColumnsMidExpanded"
+        },
+        {
+        
+        "name" : "CompanyAdd",
+        "pattern" : "CompanyAdd/{num}",
+        "target" : [     "CompanyAdd"
+        ]
+      },
+      {
+        "name": "CompanyDetailexpand",
+        "pattern": "CompanyDetail/{num}/{table}/expand",
+        "target": [
+          "CompanyDetail"
+        ],
+        "layout":"MidColumnFullScreen"
+      },
+      {
+        
+        "name" : "Chart",
+        "pattern" : "Chart",
+        "target" : [     "Chart"
+        ]
+      }
+
+        
+        
+      ],
+      "targets": {
+        
+        "Company_Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Company_Home",
+          "viewName": "Company_Home",
+          "controlAggregation": "beginColumnPages"
+        },
+        
+        "CompanyGrid": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CompanyGrid",
+          "viewName": "CompanyGrid",
+          "controlAggregation": "beginColumnPages"
+        },
+
+        "CompanyM": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CompanyM",
+          "viewName": "CompanyM",
+          "controlAggregation": "beginColumnPages"
+        },
+        
+        "CompanyDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CompanyDetail",
+          "viewName": "CompanyDetail",
+          "controlAggregation": "midColumnPages"
+        },
+        "CompanyDetailM": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CompanyDetailM",
+          "viewName": "CompanyDetailM",
+          "controlAggregation": "midColumnPages"
+        },
+        "CompanyAdd" : {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CompanyAdd",
+          "viewName": "CompanyAdd",
+          "controlAggregation": "beginColumnPages"
+
+        },
+        "Chart" : {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Chart",
+          "viewName": "Chart",
+          "controlAggregation": "beginColumnPages"
+
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "project2.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}

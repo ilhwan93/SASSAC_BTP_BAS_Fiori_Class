@@ -1,0 +1,102 @@
+<mvc:View controllerName="project5.controller.Snack_Detail" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:t="sap.ui.table" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" displayBlock="true" height="100%">
+    <!--uitable = grid table-->
+    <f:DynamicPage id="RequestPage" headerExpanded="false" toggleHeaderOnTitleClick="true" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <HBox> 
+                        <Button class="sapUiTinyMarginBottom" tooltip="간식 목록으로 돌아가기" press=".onNavToDetail" type="Back" />
+
+                        <Title text="간식 세부사항" />
+                    </HBox>
+                </f:heading>
+                 <f:navigationActions>
+                <Button visible="{=!${layout>/layout}}"
+                        icon="sap-icon://full-screen"
+                        type="Transparent" press=".onfull"/>
+                <Button visible="{layout>/layout}"
+                        icon="sap-icon://exit-full-screen"
+                        type="Transparent" press=".onexitfull"/>
+                </f:navigationActions>
+
+                <f:snappedContent>
+                    <form:SimpleForm layout="ResponsiveGridLayout">
+                        <form:content>
+                            <VBox>
+                                <Label text="간식 카테고리 : " />
+
+                                <Text id="Category" text="{
+									path:'SnackModel>/snack_category',
+									formatter: '.formatters.statusText'}" />
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="간식 가격 : " />
+                                <Text id="Price" text="{SnackModel>/snack_price}" visible="{=!${editModel>/edit}}" />
+                                <Input id="EditPrice" value="" visible="{=${editModel>/edit}}" />
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="재고 수량 : " />
+                                <Text id="Stock" text="{SnackModel>/snack_stock}" visible="{=!${editModel>/edit}}" />
+                                <Input id="EditStock" value="" visible="{=${editModel>/edit}}" />
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="마지막 신청일 : " />
+                                <Text id="Date" text="{SnackModel>/snack_date}"  width="100%" visible="{=!${editModel>/edit}}" />
+                                <Input id="EditDate" value="" visible="{=${editModel>/edit}}" />
+
+                                <!--대문자 소문자 차이가 뭐임?-->
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="간식 이름 : " />
+                                <Text id="Name" text="{SnackModel>/snack_name}" visible="{=!${editModel>/edit}}" />
+                                <Input id="EditName" value="" visible="{=${editModel>/edit}}" />
+
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="재고 상태 : " />
+                                <ObjectStatus id="Status" 
+                                    text="{
+									path: 'SnackModel>/snack_status',
+									formatter: '.formatters.statusText'
+								}"
+                                    state="{= ${SnackModel>/snack_status} ==='A'? 
+                                'Success' : 'Error'}"
+                                />                            
+															 
+															  <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="선호도 : " />
+                                <Text id="Prefer" text="{SnackModel>/snack_prefer}"/>
+                                
+
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                           
+                        </form:content>
+                    </form:SimpleForm>
+                </f:snappedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+       
+    </f:DynamicPage>
+</mvc:View>

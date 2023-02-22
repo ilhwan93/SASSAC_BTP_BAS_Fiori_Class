@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+    <ViewSettingsDialog
+        id="SortDialogProduct"
+        confirm="onConfirmSortDialogProduct"
+        title="협력 업체 목록 정렬">
+        <sortItems>
+            <ViewSettingsItem text="부품 카테고리" key="category" selected="true"/>
+            <ViewSettingsItem text="부품 코드" key="code" selected="true"/>
+            <ViewSettingsItem text="부품명" key="name" selected="true"/>
+            <ViewSettingsItem text="단위" key="unit" selected="true"/>
+            <ViewSettingsItem text="부품 단가" key="cost" selected="true"/>
+            <ViewSettingsItem text="부품 생산 여부" key="produce" selected="true"/>
+            <ViewSettingsItem text="등록 일자" key="date" selected="true"/>
+            <ViewSettingsItem text="비고" key="etc" selected="true"/>
+        </sortItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

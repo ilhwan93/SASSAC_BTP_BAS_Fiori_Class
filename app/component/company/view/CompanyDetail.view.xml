@@ -1,0 +1,121 @@
+<mvc:View controllerName="project2.controller.CompanyDetail" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:t="sap.ui.table" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" displayBlock="true" height="100%">
+    <!--uitable = grid table-->
+    <f:DynamicPage id="RequestPage" headerExpanded="false" toggleHeaderOnTitleClick="true" showFooter="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <HBox>
+                        <Button class="sapUiTinyMarginBottom" tooltip="협력 업체 목록으로 돌아가기" press=".onNavToDetail" type="Back" />
+
+                        <Title text="협력 업체  상세" />
+                    </HBox>
+                </f:heading>
+                 <f:navigationActions>
+                <Button visible="{=!${layout>/layout}}"
+                        icon="sap-icon://full-screen"
+                        type="Transparent" press=".onfull"/>
+                <Button visible="{layout>/layout}"
+                        icon="sap-icon://exit-full-screen"
+                        type="Transparent" press=".onexitfull"/>
+                </f:navigationActions>
+
+                <f:snappedContent>
+                    <form:SimpleForm layout="ResponsiveGridLayout">
+                        <form:content>
+                            <VBox>
+                                <Label text="업체 코드 : " />
+
+                                <Text id="ReqNum" text="{CompanyModel>/comcode}" />
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="업체 이름 : " />
+                                <Text id="ComName" text="{CompanyModel>/comname}" visible="{=!${editModel>/edit}}" />
+                                <Input id="comname" value="" visible="{=${editModel>/edit}}" />
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="업체 주소 : " />
+                                <Text id="ComAddress" text="{CompanyModel>/comaddress}" visible="{=!${editModel>/edit}}" />
+                                <Input id="comaddress" value="" visible="{=${editModel>/edit}}" />
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="담당자 : " />
+                                <Text id="ComPerson" text="{CompanyModel>/comperson}"  width="100%" visible="{=!${editModel>/edit}}" />
+                                <Input id="comperson" value="" visible="{=${editModel>/edit}}" />
+
+                                <!--대문자 소문자 차이가 뭐임?-->
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="연락처 : " />
+                                <Text id="ComContact" text="{CompanyModel>/comcontact}" visible="{=!${editModel>/edit}}" />
+                                <Input id="comcontact" value="" visible="{=${editModel>/edit}}" />
+
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="거래 품목 : " />
+                                <Text id="Good" text="{CompanyModel>/comgood}" visible="{=!${editModel>/edit}}" />
+                                <Input id="comgood" value="" visible="{=${editModel>/edit}}" />
+
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="등록 일자 : " />
+                                <Text id="olddate" text="{CompanyModel>/comdate}"/>
+                                
+
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                            <VBox>
+                                <Label text="신용상태 : " />
+                                <ObjectStatus id="oldstate" 
+                                    text="{         
+                                path: 'CompanyModel>/comstate',
+                                formatter: '.formatterCom.statusText'
+                                }"
+                                    state="{= ${CompanyModel>/comstate} ==='trust'? 
+                                'Success' : ${CompanyModel>/comstate} ==='caution'? 'Error': 'None' }"
+                                />
+
+                                <Select id="comstate" width="100%" items="{
+							            path: 'Company_State_Model>/value'
+						                             }" visible="{=${editModel>/edit}}" selectedKey="">
+                                    <core:Item key="{Company_State_Model>Company_state_key}" text="{Company_State_Model>Company_state_name}" />
+                                </Select>
+
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M6 S12" />
+                                </layoutData>
+                            </VBox>
+                        </form:content>
+                    </form:SimpleForm>
+                </f:snappedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:footer>
+            <OverflowToolbar visible="{visibleMode>/footer}">
+                <ToolbarSpacer />
+                <Button type="Default" text="편집" press="onEdit" visible="{=!${editModel>/edit}}" />
+                <Button type="Emphasized" text="확인" press="onConfirm" visible="{editModel>/edit}" />
+                <Button type="Default" text="취소" press="onCancel" visible="{editModel>/edit}" />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
